@@ -20,7 +20,7 @@ spring:
     # view-names:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1  #in-memory 모드 (http://www.h2database.com/html/features.html#in_memory_databases)
     username: sa
     password: sa
   h2:

@@ -1,8 +1,8 @@
 buildscript {
 	ext {
 		springBootVersion = '2.0.1.RELEASE'
-		querydslVersion    = "4.1.4"
-		metaModelsSourcesDir = file("target/querydsl/java/")
+		querydslVersion    = "4.1.4"	// dsl setting
+		metaModelsSourcesDir = file("target/querydsl/java/") // dsl setting
 	}
 	repositories {
 		mavenCentral()
@@ -44,7 +44,7 @@ idea {
 sourceSets {
 	main {
 		java {
-			srcDir metaModelsSourcesDir
+			srcDir metaModelsSourcesDir	// dsl setting
 		}
 	}
 }
@@ -60,10 +60,10 @@ sourceCompatibility = 1.8
 
 project.afterEvaluate {
 	project.tasks.compileQuerydsl.doFirst {
-		delete metaModelsSourcesDir;
-		metaModelsSourcesDir.mkdirs();
+		delete metaModelsSourcesDir;	// dsl setting
+		metaModelsSourcesDir.mkdirs();	// dsl setting
 	}
-	project.tasks.compileQuerydsl.options.compilerArgs = [
+	project.tasks.compileQuerydsl.options.compilerArgs = [	// dsl setting
 			"-proc:only",
 			"-processor", 'com.querydsl.apt.jpa.JPAAnnotationProcessor' +
 					',lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
@@ -72,11 +72,11 @@ project.afterEvaluate {
 }
 
 clean{
-	delete metaModelsSourcesDir;
+	delete metaModelsSourcesDir;	// dsl setting
 }
 
 querydsl {
-	querydslSourcesDir = "target/querydsl/java"
+	querydslSourcesDir = "target/querydsl/java"	// dsl setting
 }
 
 dependencies {
@@ -87,8 +87,8 @@ dependencies {
 	compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '3.0.2.RELEASE'
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.2.BUILD-SNAPSHOT'
-	compile("com.querydsl:querydsl-sql-spatial:${querydslVersion}")
-	compile("com.querydsl:querydsl-jpa:${querydslVersion}")
+	compile("com.querydsl:querydsl-sql-spatial:${querydslVersion}")	// dsl setting
+	compile("com.querydsl:querydsl-jpa:${querydslVersion}")	// dsl setting
 	compile("com.fasterxml.jackson.datatype:jackson-datatype-hibernate5")
 	runtime('org.springframework.boot:spring-boot-devtools')
 
